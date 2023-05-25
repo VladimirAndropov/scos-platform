@@ -1,0 +1,220 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+from django.utils import timezone
+from xmodule.modulestore.django import modulestore
+from django.contrib.auth.models import User
+from xmodule.course_module import CourseDescriptor
+from lms.djangoapps.certificates.models import GeneratedCertificate
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<%
+count_all=User.objects.all().count()
+courses = []
+for course in modulestore().get_courses():
+    if course.end and timezone.now() <= course.end:
+        courses.append(course)
+
+partners = 2
+cert = GeneratedCertificate.objects.filter(mode__exact='verified').count()
+%>
+<!-- <link rel="stylesheet" href="${static.url('css/fastyle.css')}" type="text/css" media="all" /> -->
+<link href="${static.url("css/bootstrap.min.css")}" rel="stylesheet">
+<link href="${static.url("css/animate.min.css")}" rel="stylesheet">
+<link href="${static.url("css/prettyPhoto.css")}" rel="stylesheet">
+<link href="${static.url("css/main.css")}" rel="stylesheet">
+<link href="${static.url("css/responsive.css")}" rel="stylesheet"> 
+
+
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="home">
+     
+      <header id="homepage-header">
+
+<section id="partner">
+  <div class="container">   
+
+      <div class="partners">
+        <div class="four col-md-3">
+
+          <div class="counter-box colored3"> <i class="fa fa-group"></i> <span class="counter">${partners}</span>
+              <p>Партнеров</p>
+            </div>
+        </div>
+        <div class="four col-md-3">
+            <div class="counter-box colored1"> <i class="fa fa-user"></i> <span class="counter">${count_all}</span>
+                <p>Пользователей</p>
+            </div>
+        </div>
+        <div class="four col-md-3">
+          <div class="counter-box colored2"> <i class="fa fa-certificate"></i> <span class="counter">${cert}</span>
+              <p>Сертификатов</p>
+          </div>
+      </div>
+      <div class="four col-md-3">
+
+            <div class="counter-box colored4"> <i class="fa fa-shopping-cart"></i> <span class="counter">${len(courses)}</span>
+                <p>Курсов</p>
+          </div>
+      </div>
+      </div>        
+  </div><!--/.container-->
+</section><!--/#partner-->
+
+<style type="text/css">
+
+
+    .counter-box {
+        display: block;
+        background: #f6f6f6;
+        padding: 40px 90px 37px;
+        text-align: center
+    }
+    
+    .counter-box p {
+        margin: 5px 0 0;
+        padding: 0;
+        color: #909090;
+        font-size: 18px;
+        font-weight: 500
+    }
+    
+    .counter-box i {
+        font-size: 60px;
+        margin: 0 0 15px;
+        color: #d2d2d2
+    }
+    
+    .counter {
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+        color: #666;
+        line-height: 28px
+    }
+    
+    
+    
+    .counter-box.colored p,
+    .counter-box.colored i,
+    .counter-box.colored .counter {
+        color: rgba(255, 255, 255, 0.8)
+    }
+    
+    .counter-box.colored2{
+      background: rgb(26 80 90 / 63%);
+    }
+    
+    .counter-box.colored3{
+      background: rgb(14 83 93 / 57%);
+    }
+    
+    .counter-box.colored4{
+      background: rgb(24 83 95 / 61%);
+    }
+    
+    .counter-box.colored1{
+      background: rgb(27 74 84 / 81%);
+    }
+    
+        </style>
+
+      </header>
+      <%include file="${courses_list}" />
+    </section>
+</main>
+
+
+    <section id="feature" >
+        <div class="container">
+
+
+            <div class="row">
+                <div class="features">
+
+                    <a href="https://insights.online.fa.ru"  class="col-md-4 col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cloud-download"></i>
+                            <h2>Аналитика</h2>
+                            <h3>Система анализирования курсов для методистов и преподавателей</h3>
+                        </div>
+                    </a><!--/.col-md-4-->
+
+                    <a href="https://online.fa.ru/news"  class="col-md-4 col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cogs"></i>
+                            <h2>Технические требования</h2>
+                            <h3>Минимальные параметры для обучения на платформе</h3>
+                        </div>
+                    </a><!--/.col-md-4-->
+
+                    <a href="https://online.fa.ru/faq"  class="col-md-4 col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-comments"></i>
+                            <h2>Часто задаваемые вопросы</h2>
+                            <h3>и ответы на частые вопросы</h3>
+                        </div>
+                    </a><!--/.col-md-4-->
+
+                    <a href="https://online.fa.ru/about"  class="col-md-4 col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-heart"></i>
+                            <h2>О платформе</h2>
+                            <h3>Информация для ознакомления</h3>
+                        </div>
+                    </a><!--/.col-md-4-->
+
+                </div><!--/.services-->
+            </div><!--/.row-->    
+        </div><!--/.container-->
+    </section><!--/#feature-->
+ 
+
+
+<script src="${static.url('js/bootstrap.min.js')}" charset="utf-8" type="text/javascript"></script>
+<script src="${static.url('js/jquery.prettyPhoto.js')}" charset="utf-8" type="text/javascript"></script>
+<script src="${static.url('js/jquery.isotope.min.js')}" charset="utf-8" type="text/javascript"></script>
+<script src="${static.url('js/main.js')}" charset="utf-8" type="text/javascript"></script>
+<script src="${static.url('js/wow.min.js')}" charset="utf-8" type="text/javascript"></script>
+<script src="${static.url('javascripts/bootstrap.js')}" charset="utf-8" type="text/javascript"></script>
+
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+      $(document).ready(function() {
+
+$('.counter').each(function () {
+$(this).prop('Counter',0).animate({
+Counter: $(this).text()
+}, {
+duration: 8000,
+easing: 'swing',
+step: function (now) {
+$(this).text(Math.ceil(now));
+}
+});
+});
+
+});
+   </script>
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif
+
+<script type="text/javascript">
+    $(".${LANGUAGE_CODE}").css('display', 'block');
+</script>

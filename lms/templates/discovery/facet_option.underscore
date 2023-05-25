@@ -1,0 +1,8 @@
+<li style=" padding-left: 5px;">
+    <button data-facet="<%- facet %>" data-value="<%- term %>" data-text="<%- name %>" class="facet-option discovery-button <%- selected ? 'selected' : '' %>" style="    padding: 15px 100px;    width: 100%;    background-color: #007d8c; color: #d0e2e4e6;   border-radius: 5px;">
+        <%- name %>
+        <span class="count">
+            <span class="count-number"><%- count %></span>
+        </span>
+    </button>
+</li>

@@ -1,0 +1,122 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<main class="accomplishment accomplishment-main">
+   
+
+    <div class="wrapper-accomplishment-rendering" style="margin-top: 0px">
+
+        % if organization_short_name == "fa_ifg":
+        <div class="accomplishment-rendering"  style="background: #fff url(/static/certificates/images/bg-${course_mode_class}-fa_ifg.png) ; background-size: 100%">
+        % else:   
+        <div class="accomplishment-rendering"  style="background: #fff url(/static/certificates/images/bg-${course_mode_class}.png) ; background-size: 100%">
+        % endif
+            <span class="deco-corner deco-corner-tl"></span>
+            <span class="deco-corner deco-corner-tr"></span>
+            <span class="deco-corner deco-corner-bl"></span>
+            <span class="deco-corner deco-corner-br"></span>
+           
+            % if organization_short_name == "fa_ifg":
+                <img class="src" style=" width: 160px; margin-left: 5px; margin-top: 35px;" src="/static/certificates/images/logo-fa.png" alt="logo Image">
+            % else:
+                <img class="src" style=" width: 240px; margin-left: 600px; margin-top: 20px;" src="/static/certificates/images/logo-fa.png" alt="logo Image">
+            % endif
+                <div class="wrapper-statement-and-signatories" style="margin-top: 10px">
+                <div class="accomplishment-statement" style="border-bottom: none;">
+                    <p class="accomplishment-statement-lead">
+                        % if organization_short_name == "fa_ifg":
+                    </BR>
+                        % else:
+                         <span class="accomplishment-summary copy copy-lead" style="font-family: Montserrat;font-size: 50pt;font-weight: 700;color: #256569;">СЕРТИФИКАТ</span>
+                        % endif
+                         <span class="accomplishment-summary copy copy-lead" style="color: #000101;font-family: Montserrat;font-size: 16pt;">Настоящий сертификат подтверждает, что</span>
+                        <strong class="accomplishment-recipient hd-1 emphasized" style="color: #000101;font-family: Montserrat;font-size: 20pt;" >${accomplishment_copy_name}</strong>
+                        <span class="accomplishment-summary copy copy-lead" style="color: #000101;font-family: Montserrat;font-size: 16pt;">успешно прошел(-ла) онлайн-курс</span>
+
+                        <span class="accomplishment-course hd-1 emphasized">
+                            
+                            <!-- <span class="accomplishment-course-number">${course_number}</span> -->
+                            <span class="accomplishment-course-name" style="color: #000101;font-family: Montserrat;font-size: 20pt;">${accomplishment_copy_course_name}</span>
+                            
+                        </span>
+                    </p>
+
+                    % if organization_long_name:
+                    <span class="accomplishment-course-org"style="color: #000101;font-family: Montserrat;font-size: 16pt;">в ${organization_long_name}  </span>
+                    % endif
+                    <span class="accomplishment-statement-detail copy copy-lead" style="color: #000101;font-family: Montserrat;font-size: 16pt;">
+                        ФГОБУ ВО Финансовый университет при Правительстве Российской Федерации
+                    </span> 
+                    <span class="accomplishment-statement-detail copy copy-lead" style="color: #000101;font-family: Montserrat;font-size: 16pt;">на портале Открытой онлайн-академии 
+                    </span> 
+
+                    <span class="accomplishment-summary copy copy-lead" style="margin-top: 10px; color: #a7a0a0;font-family: Montserrat;font-size: 18pt;">итоговая оценка:<strong> ${certificate_verify_urltext}</strong> баллов
+                    </span>
+                </BR></BR></BR>
+
+                </div>
+            
+               
+                <!-- % if mode != 'base': -->
+                <div class="accomplishment-signatories" style="border-bottom: none;">
+                    <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+                    % if organization_short_name == "fa_ifg":
+                    <div class="accomplishment-type">
+                        <!-- <span class="accomplishment-type-label hd-3">${document_title}</span> -->
+                        <span class="accomplishment-type-symbol" style="margin-left: 5px; margin-top: 25px;">
+                            <img class="src" src="/static/certificates/images/bg-${course_mode_class}-fa_ifg-nazarova.png" alt="Image for course mode of type ${course_mode_class}">
+                    </span> 
+                   </div>
+                    % else:
+                    <div class="accomplishment-type">
+                        <!-- <span class="accomplishment-type-label hd-3">${document_title}</span> -->
+                        <span class="accomplishment-type-symbol">
+                            <img class="src" src="/static/certificates/images/fa-podpis.png" style="width: 400px" alt="Image for course mode of type ${course_mode_class}">
+                    </span> 
+                    </div>
+                    % endif 
+                    
+                    
+                </div>
+
+            
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="wrapper-accomplishment-metadata">
+        <div class="accomplishment-metadata">
+            <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
+
+            <div class="wrapper-metadata">
+                <dl class="metadata accomplishment-recipient">
+                    <dt class="label sr-only">${_("Awarded to:")}</dt>
+                    <dd class="value copy copy-meta">
+                        <span class="recipient-img">
+                            <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
+                        </span>
+                        <div class="recipient-details">
+                            <h3 class="recipient-name">${accomplishment_copy_name}</h3>
+                            <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+                        </div>
+                    </dd>
+                </dl>
+                <!-- dl class="metadata accomplishment-id">
+                    <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+                    <dd class="value copy copy-base">${certificate_id_number}</dd>
+                </dl>
+                <dl class="metadata accomplishment-date">
+                    <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+                    <dd class="value copy copy-base">${certificate_date_issued}</dd>
+                </dl -->
+            </div>
+        </div>
+    </div>
+
+</main>

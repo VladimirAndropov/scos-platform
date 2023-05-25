@@ -1,0 +1,196 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.urls import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+<%! uses_bootstrap = True %>
+
+% if uses_bootstrap:
+   <link rel="stylesheet" href="${static.url('css/fastyle.css')}" type="text/css" media="all" />
+    <!-- link rel="stylesheet" href="${static.url('css/bootstrap/lms-main.css')}" type="text/css" media="all" / -->
+% endif
+% if uses_bootstrap:
+  <div class="container-fluid wrapper-footer">
+    <footer class="s4-notdlg">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="footer-copyright col-xs-12 col-sm-6">
+                                        <p class="copyright">Финансовый университет © ® 1998-2022 </p>
+
+                                        <p id="ctl00_ctl114_FooterAddress" class="footer-adress">125993, Москва,
+                                            Ленинградский проспект, 49</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+
+
+                                    <!--    <ul class="footer-links">
+                                            <li><a href="javascript:;" id="ctl00_ctl114_ctl00_LinkUk"
+                                                   onclick="RNS.LanguageSwitcher.switch('RU', 'EN');">English
+                                                Version</a></li>
+                                            <li></li>
+                                            <li><a href="http://www.fa.ru/Pages/SiteMap.aspx">Карта сайта</a></li>
+                                            <li><a href="http://www.fa.ru/org/div/cos/skp/Pages/Home.aspx"
+                                                   id="ctl00_ctl114_ctl00_PortalServiceLink">Служба корпоративного
+                                                портала</a></li>
+                                        </ul> -->
+
+                                        <ul id="ctl00_ctl114_ctl01_SocialWrapper" class="footer-social">
+
+                                            
+
+                                            <li>
+                                                <a target="_blank" href="https://twitter.com/FinUniver">
+                                                    <span class="icon-tw-gray"></span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a target="_blank" href="https://www.youtube.com/user/FinUniversity">
+                                                    <span class="icon-yt-gray"></span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a target="_blank" href="https://vk.com/finuniversity">
+                                                    <span class="icon-vk-gray"></span>
+                                                </a>
+                                            </li>
+
+
+                                            <li>
+                                                <a target="_blank" href="https://telegram.me/finuniverchan">
+                                                    <span class="icon-tg-gray"></span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a target="_blank" href="https://fotki.yandex.ru/users/financeuniver">
+                                                    <span class="icon-ya-gray"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div id="ctl00_ctl114_PageFooterRepeaterWrapper" class="row">
+
+
+
+
+                                </div>
+                                
+                                <div class="row">
+
+                                      <ul class="col-xs-12 col-sm-5 col-md-7 footer-links"style="text-align: center;text-transform: uppercase;">
+                                        <li class="col-xs-12 col-sm-6 col-md-3"><a href="mailto:online@fa.ru">Служба технической поддержки</a></li>
+                                        <li class="col-xs-12 col-sm-6 col-md-3"><a href="https://online.fa.ru/news">Минимальные системные требования</a></li>
+                                        <li class="col-xs-12 col-sm-6 col-md-3"><a href="https://online.fa.ru/faq">Часто задаваемые вопросы</a></li>
+                                        <li class="col-xs-12 col-sm-6 col-md-3"><a href="https://online.fa.ru/about">Описание платформы</a></li>
+                                        
+                      
+                                      </ul>
+                                    <ul class="col-xs-12 col-sm-7 col-md-5 footer-badges">
+
+                                            <!-- li>
+                                                <a href="https://itunes.apple.com/ru/app/%D0%BC-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/id1374847075?mt=8">
+                                                    <img src=${static.url('images/_layouts/15/rns.university/img/apple-ru.svg')}>
+                                                </a>
+                                            </li -->
+                                            <li>
+                                                <a href="https://developer.store.yandex.com/#app5e444ea10c0993090643f688">
+                                                    <span class="icon-google-ru"></span>
+                                                </a>
+                                            </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </footer>
+  </div>
+% else:
+  <div class="wrapper wrapper-footer">
+    <footer id="footer-openedx" class="grid-container"
+      ## When rendering the footer through the branding API,
+      ## the direction may not be set on the parent element,
+      ## so we set it here.
+      % if bidi:
+        dir=${bidi}
+      % endif
+    >
+      <div class="colophon">
+        <nav class="nav-colophon" aria-label="${_('About')}">
+          <ol>
+              % for item_num, link in enumerate(footer['navigation_links'], start=1):
+              <li class="nav-colophon-0${item_num}">
+                <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
+              </li>
+              % endfor
+          </ol>
+        </nav>
+
+        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
+            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
+        % endif
+
+        <div class="wrapper-logo">
+          <p>
+            <a href="/">
+              ## The default logo is a placeholder.
+              ## You can either replace this link entirely or update
+              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
+              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
+              ## can be included in the footer on other sites
+              ## (e.g. a blog or marketing front-end) to provide a consistent
+              ## user experience.  See the branding app for details.
+              <img alt="organization logo" src="${footer['logo_image']}">
+            </a>
+          </p>
+        </div>
+
+        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+        <p class="copyright">${footer['copyright']} ${u" | {icp}".format(icp=getattr(settings,'ICP_LICENSE')) if getattr(settings,'ICP_LICENSE',False) else ""}</p>
+
+        <nav class="nav-legal" aria-label="${_('Legal')}">
+          <ul>
+            % for item_num, link in enumerate(footer['legal_links'], start=1):
+              <li class="nav-legal-0${item_num}">
+                <a href="${link['url']}">${link['title']}</a>
+              </li>
+            % endfor
+            <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      ## Please leave this link and use one of the logos provided
+      ## The OpenEdX link may be hidden when this view is served
+      ## through an API to partner sites (such as marketing sites or blogs),
+      ## which are not technically powered by OpenEdX.
+      % if not hide_openedx_link:
+      <div class="footer-about-openedx">
+        <p>
+          <a href="${footer['openedx_link']['url']}">
+            <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+          </a>
+        </p>
+      </div>
+      % endif
+    </footer>
+  </div>
+% endif
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif

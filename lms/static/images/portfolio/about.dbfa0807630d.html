@@ -1,0 +1,29 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("About")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1>
+            <%block name="pageheader">${page_header or _("About")}</%block>
+        </h1>
+        <p>
+            <%block name="pagecontent"> <p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+line-height:107%;font-family:"Times New Roman","serif"'>Открытая
+онлайн-академия Финансового университета https://online.fa.ru— сетевой
+образовательный проект Финансового университета в области электронного
+обучения, рассчитанный как на внутреннюю, так и внешнюю аудиторию
+пользователей. Мы предоставляем возможность получить качественные знания для
+профессионального роста и самосовершенствования в удобном онлайн-формате.
+Проект обеспечивает открытый доступ разным категориям слушателей к авторским
+курсам и другим учебным материалам от лучших преподавателей университета.<o:p></o:p></span>
+<img src="https://online.fa.ru/static/images/portfolio/1.jpg" alt="">
+<h1>
+ <a href="http://dofa.ru">Институт онлайн образования</a>
+</h1>
+</p></%block>
+        </p>
+    </section>
+</main>
