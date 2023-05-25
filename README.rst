@@ -94,7 +94,7 @@ License
 The code in this repository is licensed under version 3 of the AGPL
 unless otherwise noted. Please see the `LICENSE`_ file for details.
 
-.. _LICENSE: https://github.com/edx/edx-platform/blob/master/LICENSE
+.. _LICENSE: https://www.gnu.org/licenses/agpl-3.0.en.html
 
 
 
