@@ -75,17 +75,20 @@ openedx/features/scos/
 
 Данные поля должн быть заполнены в соответствии с вашими ключами доступа, выданными в СЦОС
 
-- PLATFORM_ID = ENV_TOKENS['PLATFORM_ID']
-- INSTITUTION_ID = ENV_TOKENS['INSTITUTION_ID']
-- DOMAIN = ENV_TOKENS['DOMAIN']
-- API_URL = ENV_TOKENS['API_URL']
-- API_USER = ENV_TOKENS['API_USER']
-- API_USER_ID = ENV_TOKENS['API_USER_ID']
-- API_PASSWORD = ENV_TOKENS['API_PASSWORD']
-- PORTFOLIO_API_URL = ENV_TOKENS['PORTFOLIO_API_URL']
-- SSO_BASE_URL= ENV_TOKENS['SSO_BASE_URL']
-- CLIENT_ID = ENV_TOKENS['CLIENT_ID']
-- CLIENT_SECRET_KEY = ENV_TOKENS['CLIENT_SECRET_KEY']
+   *lms.envs.json*
+   *cms.envs.json*
+
+    "SSO_BASE_URL": "https://auth-test.online.edu.ru/realms/portfolio",
+    "PLATFORM_ID": "39************8a6db466",
+    "INSTITUTION_ID": "7************9ff5",
+    "DOMAIN": "test.online.edu.ru",
+    "API_URL": "https://test.online.edu.ru/api/",
+    "API_USER": "****y",
+    "API_USER_ID": "****y",
+    "API_PASSWORD": "2*****",
+    "PORTFOLIO_API_URL": "https://portfolio.edu.ru/api/",
+    "CLIENT_ID" : "*****y",
+    "CLIENT_SECRET_KEY" : "2*******",
 
 Файлы сертификата и ключ в папке
 *openedx/features/scos/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt*
