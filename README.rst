@@ -87,6 +87,16 @@ openedx/features/scos/
 - CLIENT_ID = ENV_TOKENS['CLIENT_ID']
 - CLIENT_SECRET_KEY = ENV_TOKENS['CLIENT_SECRET_KEY']
 
+Файлы сертификата и ключ в папке
+*openedx/features/scos/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt*
+*openedx/features/scos/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key*
+
+или пропишите их сами
+openedx/features/scos/conf.py
+строки 20-22
+SSL_CERT = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt'
+SSL_KEY = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key'
+
 
 License
 -------
