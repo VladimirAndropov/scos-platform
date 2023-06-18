@@ -1,4 +1,6 @@
-Содержит немного доработанную edX platform включающую в себя LMS и Studio, интеграцию с СЦОС
+Интеграция edX platform с СЦОС (Архивная версия)
+
+*Актуальную версию можно заказать через госзакупки, примерная цена лота 130тыс руб.*
 
 
 Инсталляция
@@ -99,6 +101,9 @@ openedx/features/scos/conf.py
 строки 20-22
 SSL_CERT = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt'
 SSL_KEY = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key'
+
+
+.. _Демка: https://online.fa.ru
 
 
 License
