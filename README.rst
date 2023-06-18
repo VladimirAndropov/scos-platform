@@ -102,7 +102,9 @@ openedx/features/scos/conf.py
 SSL_CERT = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt'
 SSL_KEY = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key'
 
-
+Как выглядит в итоге?
+-------
+Please see the `Демка`_ file for view.
 .. _Демка: https://online.fa.ru
 
 
