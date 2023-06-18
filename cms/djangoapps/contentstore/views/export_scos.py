@@ -44,14 +44,20 @@ def export_scos(request, course_key_string):
     if not has_course_author_access(request.user, course_key):
         raise PermissionDenied()              
 
-    if get_course_scos_id(course_key_string) is None:
-        status = 'is_new_course'
-        general_uid = False
-    else:
-        status = 'exist in scos'
-        general_uid = get_course_scos_id(course_key_string) 
-        
-    data = get_course_scos_data(course_key_string)  
+    try:
+        data = get_course_scos_data(course_key_string)
+        if get_course_scos_id(course_key_string) is None:
+            status = 'is_new_course'
+            general_uid = False
+        else:
+            status = 'exist in scos'
+            general_uid = get_course_scos_id(course_key_string)
+    except:
+        failed = True
+        msg = 'Please check variables for None in ' + 'http://studio.localhost/settings/advanced/' + course_key_string
+    
+     
+         
     if 'action' in request.GET:
         if request.GET['action'] == 'tolms':
             try:

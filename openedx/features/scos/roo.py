@@ -127,9 +127,12 @@ def get_widget_data(course_id):
     return resp_data
 
 def get_widget_url(course_id):
-    data = get_course_scos_data(course_id)
-    version = data['package']['items'][0]['business_version']    
-    url = 'https://test.online.edu.ru/public/widgets/feedback-widget?courseid={}&version={}'.format(get_course_scos_id(course_id),version)
+    try:
+        data = get_course_scos_data(course_id)
+        version = data['package']['items'][0]['business_version']    
+        url = 'https://test.online.edu.ru/public/widgets/feedback-widget?courseid={}&version={}'.format(get_course_scos_id(course_id),version)
+    except:
+        url = ''
     return url
 
 # def get_generic_id(course_id):
@@ -146,11 +149,14 @@ def get_widget_url(course_id):
 
 def get_course_scos_id(course_key_string):
     # """Get SCOS course's identifier if exists"""
-    course_key = CourseKey.from_string(course_key_string)
-    course_module = modulestore().get_course(course_key)
-    if course_module.giturl:
-        return course_module.giturl
-    else:
+    try:
+        course_key = CourseKey.from_string(course_key_string)
+        course_module = modulestore().get_course(course_key)     
+        if course_module.giturl:
+            return course_module.giturl
+        else:
+            return None
+    except:
         return None
     
   

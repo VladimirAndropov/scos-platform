@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../venvs/edxapp/lib/python2.7/site-packages"
+		},
+		{
+			"path": "../../../var/scos"
+		},
+		{
+			"path": "../../../var/edxapp/themes/israel"
+		}
+	],
+	"settings": {}
+}

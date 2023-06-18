@@ -31,16 +31,17 @@
           <p>${_("This will then trigger an automatic update of the main LMS site and update the contents of your course visible there to students if automatic  imports are configured.")}</p>
         </div>
       </div>
-      <!-- <ul class="list-actions item-action export-git-controls">
+      <ul class="list-actions item-action export-git-controls">
         <li class="item-action">${_("Before you begin, please ")}
-         <a class="action action-export-git action-primary" style="background-color: rgb(34, 189, 3);"  href="${reverse('export_scos', kwargs=dict(course_key_string=unicode(context_course.id)))}?action=tolms">
+         <a class="action action-export-git action-primary" style="background-color: rgb(34, 189, 3);"  href="https://online.fa.ru/courses/${unicode(context_course.id)}/advanced">
            <span class="icon fa fa-warning" aria-hidden="true"></span>
-           <span class="copy">${_("Update data in lms About page")}</span>
+           <span class="copy">${_("Check data for lms About page")}</span>
+           <span class="copy">${_("and check view for updated about page in lms")}  <a href="https://online.fa.ru/courses/${unicode(context_course.id)}/advanced">${_("there")}</a></span>
+      
          </a>
        </li> 
-       ${_("and check view for updated about page in lms")}  <a href="https://online.fa.ru/courses/${unicode(context_course.id)}/about">${_("there")}</a>
-      
-       </ul> -->
+       
+       </ul>
       <div class="export-git-controls">
         <h2 class="title">${_("Export Course to SCOS:")}</h2>
           ${_("Please do not forget create ticket")}  <a href="https://online.edu.ru/org/rightholder/tickets.xhtml?faces-redirect=true">${_("there")}</a>

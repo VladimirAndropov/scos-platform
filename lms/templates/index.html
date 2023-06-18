@@ -35,35 +35,36 @@ cert = GeneratedCertificate.objects.filter(mode__exact='verified').count()
      
       <header id="homepage-header">
 
-<section id="partner">
-  <div class="container">   
-
-      <div class="partners">
-        <div class="four col-md-3">
-
-          <div class="counter-box colored3"> <i class="fa fa-group"></i> <span class="counter">${partners}</span>
-              <p>Партнеров</p>
-            </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box colored1"> <i class="fa fa-user"></i> <span class="counter">${count_all}</span>
-                <p>Пользователей</p>
-            </div>
-        </div>
-        <div class="four col-md-3">
-          <div class="counter-box colored2"> <i class="fa fa-certificate"></i> <span class="counter">${cert}</span>
-              <p>Сертификатов</p>
-          </div>
-      </div>
-      <div class="four col-md-3">
-
-            <div class="counter-box colored4"> <i class="fa fa-shopping-cart"></i> <span class="counter">${len(courses)}</span>
-                <p>Курсов</p>
-          </div>
-      </div>
-      </div>        
-  </div><!--/.container-->
-</section><!--/#partner-->
+        <section id="partner">
+            <div class="container">   
+          
+                <div class="partners">
+                  <!--div class="four col-md-3">
+          
+                    <div class="counter-box colored3"> <i class="fa fa-group"></i> <span class="counter">${partners}</span>
+                        <p>Партнеров</p>
+                      </div>
+                  </div -->
+                  <div class="four col-md-4">
+                      <div class="counter-box colored1"> <i class="fa fa-user"></i> <span class="counter">${count_all}</span>
+                          <p>Пользователей</p>
+                      </div>
+                  </div>
+                  <div class="four col-md-4">
+                    <div class="counter-box colored2"> <i class="fa fa-certificate"></i> <span class="counter">${cert}</span>
+                        <p>Сертификатов</p>
+                    </div>
+                </div>
+                <div class="four col-md-4">
+          
+                      <div class="counter-box colored4"> <i class="fa fa-shopping-cart"></i> <span class="counter">${len(courses)}</span>
+                          <p>Курсов</p>
+                    </div>
+                </div>
+                </div>        
+            </div><!--/.container-->
+          </section><!--/#partner-->
+          
 
 <style type="text/css">
 

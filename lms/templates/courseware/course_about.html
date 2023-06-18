@@ -392,7 +392,7 @@ from openedx.features.scos.roo import get_course_scos_id, get_course_scos_data,g
           % endif
 
           
-         
+          % if course_details.learning_info:
           <li class="important-dates-item">
             <span class="icon fa fa-graduation-cap" aria-hidden="true">
             </span>
@@ -403,6 +403,7 @@ from openedx.features.scos.roo import get_course_scos_id, get_course_scos_data,g
               % endfor
             </span>
           </li>
+          % endif
           <li class="important-dates-item">
             <span class="icon fa fa-book fa-fw" aria-hidden="true">
             </span>
@@ -493,8 +494,8 @@ from openedx.features.scos.roo import get_course_scos_id, get_course_scos_data,g
 
           </br>
         
-          <span>${_("EDU_requests")}</span>
-          <iframe class="online-edu-course-replies" src=${get_widget_url(text_type(course.id))}></iframe>
+          <!-- <span>${_("EDU_requests")}</span>
+          <iframe class="online-edu-course-replies" src=${get_widget_url(text_type(course.id))}></iframe> -->
 
         </ol>
         </%block>

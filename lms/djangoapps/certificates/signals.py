@@ -144,6 +144,7 @@ def fire_ungenerated_certificate_task(user, course_key, expected_verification_st
         generate_certificate.apply_async(countdown=CERTIFICATE_DELAY_SECONDS, kwargs=kwargs)
         if get_course_scos_id(unicode(course_key)) is not None:
             update_subsection_grade_scos_for_user_v2.apply_async(
+                priority=9,
                 countdown=10*CERTIFICATE_DELAY_SECONDS,
                 expires=10*CERTIFICATE_DELAY_SECONDS+2, 
                 kwargs={
