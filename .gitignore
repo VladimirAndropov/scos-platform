@@ -141,3 +141,4 @@ dist
 .vscode
 ## SCOS key
 openedx/features/scos/keys/
+workspace.code-workspace
