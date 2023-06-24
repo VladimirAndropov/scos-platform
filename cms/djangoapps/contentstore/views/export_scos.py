@@ -52,9 +52,9 @@ def export_scos(request, course_key_string):
         else:
             status = 'exist in scos'
             general_uid = get_course_scos_id(course_key_string)
-    except:
+    except Exception as err:
         failed = True
-        msg = 'Please check variables for None in ' + 'http://studio.localhost/settings/advanced/' + course_key_string
+        msg = "Please check for None in http://studio.localhost/settings/advanced/{0} bcs you have error in {1} with args: {2}".format(course_key_string, type(err).__name__, err.args)
     
      
          

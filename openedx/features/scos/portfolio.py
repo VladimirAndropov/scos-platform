@@ -47,7 +47,8 @@ def enroll_scos_user(cid, uid):
         }
     if api is None:
         api = get_api_requester()
-    url = 'v1/course/enroll'
+    # url = 'v1/course/enroll'
+    url = 'v2/courses/participation'
     resp = api.post(url, data = json.dumps(post_data) ,headers = JSON_HEADER)
     if resp.status_code == 201:
         return True
@@ -72,8 +73,9 @@ def unenroll_scos_user(cid, uid):
     if api is None:
         api = get_api_requester()
 
-    url = 'v1/course/unenroll'
-    resp = api.post(url ,data = json.dumps(post_data) ,headers = JSON_HEADER)
+    # url = 'v1/course/unenroll'
+    url = 'v2/courses/participation'
+    resp = api.delete(url ,data = json.dumps(post_data) ,headers = JSON_HEADER)
     return resp
 
 
@@ -88,20 +90,21 @@ def check_scos_enrollment(cid, uid):
     if scos_uid is None:
         return False
     
-    url = 'v1/course/checkenroll'
-    post_data = {
-        'courseId': scos_cid,
-        'sessionId': cid,
-        'usiaId': scos_uid
-    }
+    # url = 'v1/course/checkenroll'
+    url = 'v2/courses/participation?{course_id}&{user_id}&{session_id}'.format(scos_cid, scos_uid, cid)
+    # post_data = {
+    #     'courseId': scos_cid,
+    #     'sessionId': cid,
+    #     'usiaId': scos_uid
+    # }
         
     if api is None:
         api = get_api_requester()
         
-    resp = api.post(
-        url, data=json.dumps(post_data), headers=JSON_HEADER
-    )
-    
+    # resp = api.post(
+    #     url, data=json.dumps(post_data), headers=JSON_HEADER
+    # )
+    resp = api.get(url)
     resp_data = resp.json()
     return resp_data['data']
 
@@ -136,7 +139,8 @@ def post_result(cid, uid, timestamp, rating, progress, checkpointName, checkpoin
     if api is None:
         api = get_api_requester()
         
-    url = 'v1/course/results/add'
+    # url = 'v1/course/results/add'
+    url = 'v2/courses/results/progress'
     resp = api.post(
         url
         ,data = json.dumps(post_data)
@@ -185,6 +189,7 @@ def post_result_mark(cid, uid, mark):
     if api is None:
         api = get_api_requester()
         
+    # url = 'v2/courses/participation/mark'
     url = 'v2/courses/participation/mark'
     resp = api.post(
         url
@@ -201,8 +206,18 @@ def post_result_mark(cid, uid, mark):
     return True
 
 
-def post_cert(username, cid):
-    return
+def post_cert(document, description):
+    if api is None:
+        api = get_api_requester()
+    url = 'v2/certificates'
+    post_data = {
+        'document': document,
+        'description': description
+        }
+    resp = api.post(
+        url, data=json.dumps(post_data), headers=JSON_HEADER
+        )
+    return resp
 
 
 def get_mark_batch(user_ids, cid):

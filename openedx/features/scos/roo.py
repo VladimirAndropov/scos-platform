@@ -50,8 +50,8 @@ def post_course_data(data):
     global api
     if api is None:
         api = get_api_requester()
-    # url = 'v2/registry/courses' 
-    url = 'courses/v0/course' 
+    url = 'v2/registry/courses' 
+    # url = 'courses/v0/course' 
     # url = 'https://test.online.edu.ru/api/courses/v0/course' 
     resp = api.post(url, json = json.dumps(data), headers = JSON_HEADER)
     return resp
@@ -62,8 +62,8 @@ def put_course_data(data):
     global api
     if api is None:
         api = get_api_requester()
-    url = 'courses/v0/course' 
-    # url = 'v2/registry/courses' 
+    # url = 'courses/v0/course' 
+    url = 'v2/registry/courses' 
     resp = api.put(url, json=data, headers = JSON_HEADER)
     return resp.status_code
     
@@ -78,9 +78,11 @@ def get_course_moderation_status(cid):
     scos_id = data['package']['items'][0]['id']
     if api is None:
         api = get_api_requester()
-    url = 'courses/v0/get_moderation_status?course_id='
+    # url = 'courses/v0/get_moderation_status?course_id='
+    url = 'v2/registry/courses/moderation_status?course_id={scos_id}'.format(scos_id)
+    # url = 'v2/registry/courses/status?course_id={scos_id}'.format(scos_id)
     # url = 'https://test.online.edu.ru/api/courses/v0/get_moderation_status?course_id='
-    resp = api.get(url + scos_id)
+    resp = api.get(url)
     # resp = api.get(url + scos_id, data=json.dumps(payload),  headers=headers, cert=(SSL_CERT, SSL_KEY))
     print(resp.text)
     resp.raise_for_status()
@@ -101,7 +103,8 @@ def change_course_status(cid, status):
     scos_id = data['package']['items'][0]['id']
     if api is None:
         api = get_api_requester()
-    url = 'courses/v0/update_status?course_id=' + scos_id + '&new_status=' + status   
+    # url = 'courses/v0/update_status?course_id=' + scos_id + '&new_status=' + status   
+    url = 'v2/registry/courses/update_status?course_id={scos_id}&new_status={status}'.format(scos_id,status)
     # url = 'https://test.online.edu.ru/api/courses/v0/update_status?course_id=' + scos_id + '&new_status=' + status
     resp = api.put(url)
     print(resp.text)
