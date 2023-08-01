@@ -20,13 +20,13 @@
 Пояснения
 ------------
 
-код СЦОС находится здесь
-openedx/features/scos/
+код приложения СЦОС находится здесь
+https://github.com/VladimirAndropov/scos-platform/tree/master/openedx/features/scos
 
 Виджет экспорта в СЦОС
 
-    cms/templates/export_scos.html
-    cms/djangoapps/contentstore/views/export_scos.py
+    https://github.com/VladimirAndropov/scos-platform/tree/master/cms/templates/export_scos.html
+    https://github.com/VladimirAndropov/scos-platform/tree/master/cms/djangoapps/contentstore/views/export_scos.py
 
 
 В связи с тем, что требовались дополнительные атриуты курса, были добавлены
@@ -60,27 +60,31 @@ openedx/features/scos/
 Функция для передачи результатов в СЦОС
 
 ## update_subsection_grade_scos_for_user_v2
+смотри
+ https://github.com/VladimirAndropov/scos-platform/tree/master/lms/djangoapps/grades/tasks.py
 
 Асинхроннй запуск функции передачи результатов в СЦОС
 
-*lms/djangoapps/certificates/signals.py*
-строка 146
+ https://github.com/VladimirAndropov/scos-platform/tree/master/lms/djangoapps/certificates/signals.py
+от строки 146
 
 Ручной запуск функции передачи результатов в СЦОС на странице прогресса
 
-*lms/templates/courseware/progress.html*
+ https://github.com/VladimirAndropov/scos-platform/tree/master/lms/templates/courseware/progress.html
 
-Дополнительнй поля справа на странице
+Дополнительные поля 
 
-*lms/templates/courseware/course_about.html*
+ https://github.com/VladimirAndropov/scos-platform/tree/master/lms/templates/courseware/course_about.html
 
 Параметры настроек доступа
 ------------
 
 Данные поля должн быть заполнены в соответствии с вашими ключами доступа, выданными в СЦОС
 
+обычно, заполняются в файлах:
    *lms.envs.json*
    *cms.envs.json*
+
 
     "SSO_BASE_URL": "https://auth-test.online.edu.ru/realms/portfolio",
     "PLATFORM_ID": "39************8a6db466",
@@ -94,19 +98,17 @@ openedx/features/scos/
     "CLIENT_ID" : "*****y",
     "CLIENT_SECRET_KEY" : "2*******",
 
-Файлы сертификата и ключ в папке
+Файлы сертификата и ключи кидайте в файлы
 *openedx/features/scos/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt*
 *openedx/features/scos/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key*
 
-или пропишите их сами
+остальные настройки смотри в
 openedx/features/scos/conf.py
-строки 20-22
-SSL_CERT = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.crt'
-SSL_KEY = MODULE_DIR + '/keys/bc007e88-0e4b-4a1a-975a-8aecca36542d.key'
+
 
 Как выглядит в итоге?
 -------
-Please see the `Демка`
+
 .. _Демка: https://online.fa.ru
 
 
