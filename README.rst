@@ -109,8 +109,11 @@ openedx/features/scos/conf.py
 Как выглядит в итоге?
 -------
 
+`Демка`_ 
+
 .. _Демка: https://online.fa.ru
 
+![shema](https://github.com/VladimirAndropov/scos-platform/tree/master/architecture.png?raw=true)
 
 _донаты
 -------
