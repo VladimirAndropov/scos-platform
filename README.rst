@@ -113,7 +113,7 @@ openedx/features/scos/conf.py
 
 .. _Демка: https://online.fa.ru
 
-![Preview](https://github.com/VladimirAndropov/scos-platform/tree/master/architecture.png?raw=true)
+![Preview](architecture.png)
 
 _донаты
 -------
