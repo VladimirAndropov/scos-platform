@@ -1,11 +1,14 @@
-Интеграция edX platform с СЦОС
+Платформа дистанционного обучения с интеграцией с  Государственной информационной системой Современная Цифровая Образовательная Среда
 
-*отдельный fork для бесплатной установки в российских вузах*
+* для бесплатной установки в российских вузах*
 
-*Существует на `донаты`*
+*stack: см картинку
 
+![Preview](https://github.com/VladimirAndropov/scos-platform/blob/master/architecture.png?raw=true)
 
-Инсталляция
+Описание архитектуры см. в документации
+
+Быстрая инсталляция
 ------------
 
 Склонировать в 
@@ -20,7 +23,7 @@
 Пояснения
 ------------
 
-код приложения СЦОС находится здесь
+отдельная интеграция с СЦОС находится здесь
 https://github.com/VladimirAndropov/scos-platform/tree/master/openedx/features/scos
 
 Виджет экспорта в СЦОС
@@ -29,7 +32,7 @@ https://github.com/VladimirAndropov/scos-platform/tree/master/openedx/features/s
     https://github.com/VladimirAndropov/scos-platform/tree/master/cms/djangoapps/contentstore/views/export_scos.py
 
 
-В связи с тем, что требовались дополнительные атриуты курса, были добавлены
+ Атрибуты объекта курс, необходимые для передачи в СЦОС
 
 > competences = serializers.CharField(max_length=255)
 > 
@@ -53,7 +56,7 @@ https://github.com/VladimirAndropov/scos-platform/tree/master/openedx/features/s
 > 
 > business_version = serializers.BooleanField()
 
-Поля дополнительных атриутов заполняются в 
+Поля атрибутов заполняются в 
 
   *Студия - Расширенные настройки*
 
@@ -113,7 +116,7 @@ openedx/features/scos/conf.py
 
 .. _Демка: https://online.fa.ru
 
-![Preview](https://github.com/VladimirAndropov/scos-platform/blob/master/architecture.png?raw=true)
+
 
 _донаты
 -------
