@@ -22035,3 +22035,9 @@ msgstr ""
 
 #~ msgid "Enroll now"
 #~ msgstr "Записаться"
+
+#~ msgid "Banner short description"
+#~ msgstr "Короткая запись на баннере курса"
+
+#~ msgid "Course themes"
+#~ msgstr "Темы курса"

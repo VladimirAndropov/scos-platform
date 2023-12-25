@@ -4,13 +4,16 @@
 			"path": "."
 		},
 		{
+			"path": "../../../var/edxapp/themes/israel"
+		},
+		{
 			"path": "../venvs/edxapp/lib/python2.7/site-packages"
 		},
 		{
-			"path": "../../../var/scos"
+			"path": "../venvs/edxapp/src"
 		},
 		{
-			"path": "../../../var/edxapp/themes/israel"
+			"path": "../../../var/edxapp/themes/bootstrap"
 		}
 	],
 	"settings": {}

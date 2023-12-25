@@ -212,7 +212,7 @@ def get_course_scos_data(course_key_string):
                 "finished_at": jsondetails['end_date'],                
                 "image": settings.LMS_ROOT_URL + str(jsondetails['course_image_asset_path']),
                 "description": jsondetails['short_description'],
-                "competences":competences,
+                "competences":jsondetails['description'],
                 "requirements": requirements,
                 "content": content,
                 "external_url": settings.LMS_ROOT_URL +"/courses/"+str(course_key_string)+"/about",

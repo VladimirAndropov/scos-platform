@@ -340,7 +340,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                   <span class="tip tip-stacked">${_("Displayed on the course details page. Limit to 50 characters.")}</span>
                 </li>
                 <li class="field text" id="field-course-description">
-                  <label for="course-description">${_("Course Description")}</label>
+                  <label for="course-description">${_("competences")}</label>
                   <textarea class="text" id="course-description"></textarea>
                   <span class="tip tip-stacked">${_("Displayed on the course details page. Limit to 1000 characters.")}</span>
                 </li>
@@ -348,7 +348,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
                 % if short_description_editable:
                 <li class="field text" id="field-course-short-description">
-                  <label for="course-short-description">${_("About course")}</label>
+                  <label for="course-short-description">${_("Banner short description")}</label>
                   <textarea class="text" id="course-short-description"></textarea>
                   <span class="tip tip-stacked">${_("Appears on the course catalog page when students roll over the course name. Limit to ~150 characters")}</span>
                 </li>
@@ -357,7 +357,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
                 % if about_page_editable:
                 <li class="field text" id="field-course-overview">
-                  <label for="course-overview">${_("Course Overview")}</label>
+                  <label for="course-overview">${_("Course themes")}</label>
                   <textarea class="tinymce text-editor" id="course-overview"></textarea>
                   <label class="sr" for="course-overview-cm-textarea">
                     ${_('HTML Code Editor')}
